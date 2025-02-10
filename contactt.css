@@ -49,15 +49,39 @@ nav ul li a:hover {
     margin: 0% auto;
 }
 
+@keyframes slideLeft {
+    0% {opacity: 0; transform: translateX(-30%);}
+    100% {opacity: 1; transform: translateX(0);}
+}
+
+@keyframes slideRight {
+    0% {opacity: 0; transform: translateX(30%);}
+    100% {opacity: 1; transform: translateX(0);}
+}
+
+@keyframes slideDown {
+    0% {opacity: 0; transform: translateY(-30%);}
+    100% {opacity: 1; transform: translateY(0);}
+}
+
+.head-text{
+    opacity: 0;
+    animation: slideDown 1s ease-out forwards;
+}
+
 .content-text{
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     width: 100%;
     max-width: 1080px;
+    opacity: 0;
+    animation: slideLeft 1s ease-out forwards;
 }
 
 .content-image {
     display: flex;
     gap: 2rem;
+    opacity: 0;
+    animation: slideRight 1s ease-out forwards;
 }
 
 .instagram {
@@ -73,6 +97,7 @@ nav ul li a:hover {
 }
 
 .h1 {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     font-size: 48px;
     font-weight: bold;
     color: #333;
