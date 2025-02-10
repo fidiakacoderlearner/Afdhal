@@ -47,9 +47,14 @@ nav ul li a:hover {
     height: 75vh;
 }
 
+@keyframes fadeIn{
+    0% { opacity: 0; transform: translateY(30%); }
+    100% { opacity: 1; transform: translateY(0); }
+}
 .content-text {
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     padding: 7rem 15rem;
+    animation: fadeIn 2s ease-out forwards;
 }
 
 h1 {
