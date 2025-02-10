@@ -47,6 +47,24 @@ nav ul li a:hover {
     height: 75vh;
 }
 
+.content-text {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    padding: 7rem 15rem;
+}
+
+h1 {
+    font-size: 48px;
+    font-weight: bold;
+    color: #333;
+    line-height: 1.6;
+}
+
+p {
+    font-size: 22px;
+    color: #666;
+    line-height: 1.6;
+}
+
 .footer{
     padding: 2rem 15rem;
     background-color: #333;
