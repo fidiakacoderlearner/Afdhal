@@ -14,6 +14,9 @@ nav{
     display: flex;
     justify-content: space-between;
     padding: 1rem 15rem;
+    opacity: 0;
+    animation: slideDown 1s ease-out forwards;
+    height: 13vh;
 }
 
 nav ul {
@@ -44,10 +47,9 @@ nav ul li a:hover {
 }
 
 .content{
-    gap: 100px;
+    gap: 315px;
     height: 75vh;
-    padding: 3rem 15rem;
-    margin: 0% auto;
+    padding-left: 15rem;
     display: flex;
     align-items: center;
 }
@@ -62,9 +64,18 @@ nav ul li a:hover {
     100% {opacity: 1; transform: translateX(0);}
 }
 
+@keyframes slideDown {
+    0% {opacity: 0; transform: translateY(-30%);}
+    100% {opacity: 1; transform: translateY(0);}
+}
+
+@keyframes slideUp {
+    0% {opacity: 0; transform: translateY(30%);}
+    100% {opacity: 1; transform: translateY(0);}
+}
+
 .content-text{
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    width: 100%;
     max-width: 1080px;
     opacity: 0;
     animation: slideLeft 1s ease-out forwards;
@@ -116,4 +127,6 @@ nav ul li a:hover {
     color: white;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     height: 12vh;
+    opacity: 0;
+    animation: slideUp 1s ease-out forwards;
 }
