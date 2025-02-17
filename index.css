@@ -49,6 +49,7 @@ nav ul li a:hover {
 .content {
     height: 75vh;
     padding-left: 15rem;
+    padding-right: 15rem;
     align-content: center;
 }
 
