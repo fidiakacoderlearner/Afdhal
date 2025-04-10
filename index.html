@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Pidi</title>
+    <link rel="stylesheet" href="style.css"/>
+    <style>
+        /* CSS Tambahan untuk Repositori PDF */
+        .pdf-repository {
+            margin: 40px auto;
+            max-width: 900px;
+            padding: 0 20px;
+        }
+        
+        .pdf-item {
+            background: white;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 16px;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            transition: transform 0.2s, box-shadow 0.2s;
+            cursor: pointer;
+        }
+        
+        .pdf-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            background-color: #f8f9fa;
+        }
+        
+        .pdf-icon {
+            margin-right: 16px;
+            font-size: 24px;
+            color: #d93025;
+        }
+        
+        .pdf-info {
+            flex-grow: 1;
+        }
+        
+        .pdf-title {
+            font-weight: 600;
+            margin: 0 0 4px 0;
+            color: #0366d6;
+        }
+        
+        .pdf-meta {
+            font-size: 12px;
+            color: #586069;
+            margin: 0;
+        }
+        
+        @media (max-width: 600px) {
+            .pdf-item {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .pdf-icon {
+                margin-bottom: 10px;
+            }
+        }
+        
+        /* Penyesuaian konten utama */
+        .main-content {
+            text-align: center;
+            padding: 40px 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- NAVIGATION BAR -->
+    <nav>
+        <div class="">
+            <img src="fidi logo putih-fotor-.png" alt="logo-fidi">      
+        </div>
+        <ul>
+            <li>
+                <a href="#">Home</a>
+            </li>
+            <li>
+                <a href="about.html">About</a>
+            </li>
+            <li>
+                <a href="contact.html">Contact</a>
+            </li>
+        </ul> 
+    </nav>
+    <!-- NAVIGATION BAR DONE -->
+    
+    <!-- CONTENT UTAMA -->
+    <div class="main-content">
+        <h1>Repositori Dokumen Saya</h1>
+        <p>Berikut koleksi dokumen dan publikasi yang dapat Anda akses</p>
+    </div>
+    
+    <!-- REPOSITORI PDF -->
+    <div class="pdf-repository">
+        <!-- Contoh Item PDF 1 -->
+        <div class="pdf-item" onclick="window.open('https://drive.google.com/file/d/1z6ImBDT5IAAEemuXn5hRc7XmjkyUhi2A/view?usp=drive_link')">
+            <div class="pdf-icon">📄</div>
+            <div class="pdf-info">
+                <h3 class="pdf-title">Laporan Tengah Semester</h3>
+                <p class="pdf-meta">PDF • 2.4 MB • Diperbarui 15 Januari 2024</p>
+            </div>
+        </div>
+    
+    <!-- FOOTER -->
+    <div class="footer">
+        Copyright &copy; 2025 By Afdhal Fidi Ansori
+    </div>
+
+    <script>
+        // Fungsi alternatif untuk membuka PDF
+        function openPDF(url) {
+            const viewerUrl = `https://docs.google.com/viewer?url=${encodeURIComponent(url)}`;
+            window.open(viewerUrl, '_blank');
+        }
+    </script>
+</body>
+</html>
