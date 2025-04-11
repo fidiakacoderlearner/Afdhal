@@ -93,18 +93,18 @@
     
     <!-- CONTENT UTAMA -->
     <div class="main-content">
-        <h1>Dokumen Tugas Saya</h1>
+        <h1>Repositori Dokumen Saya</h1>
         <p>Berikut koleksi dokumen dan publikasi yang dapat Anda akses</p>
     </div>
     
     <!-- REPOSITORI PDF -->
     <div class="pdf-repository">
         <!-- Contoh Item PDF 1 -->
-        <div class="pdf-item" onclick="window.location.href='repo.html'">
+        <div class="pdf-item" data-pdf="testUTS.pdf" data-filename="Laporan-Tengah-Semester.pdf">
             <div class="pdf-icon">📄</div>
             <div class="pdf-info">
                 <h3 class="pdf-title">Laporan Tengah Semester</h3>
-                <p class="pdf-meta">PDF • 2.4 MB • Diperbarui 15 Januari 2024</p>
+                <p class="pdf-meta">PDF • 843 KB • Diperbarui 11 April 2025</p>
             </div>
         </div>
     
@@ -114,11 +114,35 @@
     </div>
 
     <script>
-        // Fungsi alternatif untuk membuka PDF
-        function openPDF(url) {
-            const viewerUrl = `https://docs.google.com/viewer?url=${encodeURIComponent(url)}`;
-            window.open(viewerUrl, '_blank');
+        // Fungsi untuk deteksi perangkat mobile
+        function isMobileDevice() {
+            return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
         }
+
+        // Fungsi untuk menangani klik PDF
+        function handlePdfClick(pdfUrl, pdfName) {
+            if (isMobileDevice()) {
+                // Auto download di mobile
+                const link = document.createElement('a');
+                link.href = pdfUrl;
+                link.download = pdfName;
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            } else {
+                // Buka di tab baru untuk desktop
+                window.open(pdfUrl, '_blank');
+            }
+        }
+
+        // Tambahkan event listener ke semua item PDF
+        document.querySelectorAll('.pdf-item').forEach(item => {
+            item.addEventListener('click', function() {
+                const pdfUrl = this.getAttribute('data-pdf');
+                const pdfName = this.getAttribute('data-filename');
+                handlePdfClick(pdfUrl, pdfName);
+            });
+        });
     </script>
 </body>
 </html>
