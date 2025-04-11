@@ -122,7 +122,6 @@
         // Fungsi untuk menangani klik PDF
         function handlePdfClick(pdfUrl, pdfName) {
             if (isMobileDevice()) {
-                // Auto download di mobile
                 const link = document.createElement('a');
                 link.href = pdfUrl;
                 link.download = pdfName;
@@ -130,8 +129,7 @@
                 link.click();
                 document.body.removeChild(link);
             } else {
-                // Buka di tab baru untuk desktop
-                window.open(pdfUrl, '_blank');
+                window.location.href = 'repo.html';
             }
         }
 
