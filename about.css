@@ -78,8 +78,27 @@ nav ul li a:hover::after {
     flex: 1;
 }
 
+.content-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex: 1;
+}
+
 .content-text {
     max-width: 600px;
+}
+
+.content-image {
+    flex: 0 0 300px;
+    text-align: center;
+}
+
+.content-image img {
+    width: 100%;
+    max-width: 250px;
+    height: auto;
+    animation: slideInRight 1.2s ease-out forwards;
 }
 
 .h1 {
@@ -95,6 +114,13 @@ nav ul li a:hover::after {
     color: #64748b;
     margin-bottom: rem;
     line-height: 1;
+    animation: slideInLeft 1.2s ease-out forwards;
+}
+
+.p5 {
+    font-size: 1.1rem;
+    color: #64748b;
+    margin-top: 5rem;
     animation: slideInLeft 1.2s ease-out forwards;
 }
 
@@ -122,8 +148,11 @@ nav ul li a:hover::after {
     }
     
     .content-image {
-        margin-left: 0;
-        max-width: 100%;
+        flex: 0 0 auto;
+    }
+    
+    .content-image img {
+        max-width: 200px;
     }
 }
 
@@ -241,7 +270,6 @@ nav ul li a:hover::after {
     border-radius: 12px;
     background-color: rgb(233, 233, 233);
     box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-    animation: slideInLeft 1.2s ease-out forwards;
 }
 
 .skill-title {
