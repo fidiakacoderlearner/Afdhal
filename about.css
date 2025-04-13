@@ -199,6 +199,13 @@ nav ul li a:hover::after {
   .skill-bar {
     height: 8px;
   }
+
+    .content-top {
+    display: block;
+    justify-content: space-between;
+    align-items: center;
+    flex: 1;
+    }
   
   /* Animasi di mobile lebih sederhana */
   @media (prefers-reduced-motion: no-preference) {
@@ -237,6 +244,13 @@ nav ul li a:hover::after {
         margin-right: auto; /* Pusatkan blok */
         padding: 0 1rem; /* Padding untuk mobile */
         width: 100%; /* Pastikan tidak melebihi parent */
+    }
+
+    .content-top {
+    display: block;
+    justify-content: space-between;
+    align-items: center;
+    flex: 1;
     }
 }
 
