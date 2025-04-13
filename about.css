@@ -98,13 +98,6 @@ nav ul li a:hover::after {
     animation: slideInLeft 1.2s ease-out forwards;
 }
 
-.p5 {
-    font-size: 1.1rem;
-    color: #64748b;
-    margin-top: 5rem;
-    animation: slideInLeft 1.2s ease-out forwards;
-}
-
 /* === Footer === */
 .footer {
     width: 100%;
@@ -255,6 +248,7 @@ nav ul li a:hover::after {
     color: #1e293b;
     margin-bottom: 1.5rem;
     font-weight: 700;
+    animation: slideInLeft 1.2s ease-out forwards;
 }
 
 .skill-item {
