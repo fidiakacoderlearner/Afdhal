@@ -241,6 +241,7 @@ nav ul li a:hover::after {
     border-radius: 12px;
     background-color: rgb(233, 233, 233);
     box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    animation: slideInLeft 1.2s ease-out forwards;
 }
 
 .skill-title {
@@ -248,7 +249,6 @@ nav ul li a:hover::after {
     color: #1e293b;
     margin-bottom: 1.5rem;
     font-weight: 700;
-    animation: slideInLeft 1.2s ease-out forwards;
 }
 
 .skill-item {
