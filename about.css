@@ -245,7 +245,7 @@ nav ul li a:hover::after {
 }
 /* === Responsif === */
 * Tablet (768px ke atas) */
-@media (min-width: 768px) {
+@media (max-width: 768px) {
     .content {
         padding: 4rem 8%;
     }
