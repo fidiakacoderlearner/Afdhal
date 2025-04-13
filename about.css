@@ -167,16 +167,11 @@ nav ul li a:hover::after {
   
   .p1, .p2, .p3, .p4 {
     font-size: 0.9rem;
-    text-align: center;
-    line-height: 0;
+    text-align: left;
+    line-height: 0,5;
+    margin-bottom: 0;
   }
-  
-  .p5 {
-    margin-top: 2rem;
-    font-size: 0.9rem;
-    text-align: center;
-  }
-  
+    
   .content-image img {
     max-width: 90px;
   }
@@ -230,9 +225,10 @@ nav ul li a:hover::after {
     }
 
     .p1, .p2, .p3, .p4 {
-    font-size: 0.9rem;
-    text-align: center;
-    line-height: 0;
+        font-size: 0.9rem;
+        text-align: left;
+        line-height: 0,5;
+        margin-bottom: 0;
   }
 }
 
