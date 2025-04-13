@@ -135,55 +135,150 @@ nav ul li a:hover::after {
     animation: slideInUp 0.6s ease-out 0.2s both
 }
 
-/* === Responsif === */
-@media (max-width: 1024px) {
-    .content {
-        flex-direction: column;
-        padding: 3rem 5%;
-    }
-    
-    .content-text {
-        margin-bottom: 3rem;
-        text-align: left;
-    }
-    
-    .content-image {
-        flex: 0 0 auto;
+@media (max-width: 480px) {
+  /* Navigation */
+  nav {
+    padding: 1rem;
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  nav ul {
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 1rem;
+  }
+  
+  nav ul li {
+    margin: 0.5rem;
+  }
+  
+  nav img {
+    height: 40px;
+  }
+  
+  /* Content */
+  .content {
+    padding: 2rem 1rem;
+  }
+  
+  .content-top {
+    gap: 1.5rem;
+  }
+  
+  .h1 {
+    font-size: 1.8rem;
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+  
+  .p1, .p2, .p3, .p4 {
+    font-size: 0.9rem;
+    text-align: center;
+    line-height: 1.5;
+  }
+  
+  .p5 {
+    margin-top: 2rem;
+    font-size: 0.9rem;
+    text-align: center;
+  }
+  
+  .content-image img {
+    max-width: 180px;
+  }
+  
+  /* Skills Section */
+  .skills {
+    margin: 2rem 0;
+    padding: 1rem;
+    border-radius: 8px;
+  }
+  
+  .skill-title {
+    font-size: 1.5rem;
+    text-align: center;
+  }
+  
+  .skill-name {
+    font-size: 0.8rem;
+  }
+  
+  .skill-bar {
+    height: 8px;
+  }
+  
+  /* Animasi di mobile lebih sederhana */
+  @media (prefers-reduced-motion: no-preference) {
+    .h1, .p1, .p2, .p3, .p4 {
+      animation: fadeIn 1s ease-out;
     }
     
     .content-image img {
-        max-width: 200px
+      animation: fadeIn 1.5s ease-out;
     }
+  }
 }
 
-@media (max-width: 768px) {
-    nav {
-        flex-direction: column;
-        padding: 1rem;
-    }
-    
-    nav ul {
-        margin-top: 1rem;
-    }
-    
-    nav ul li {
-        margin: 0 1rem;
+/* Animasi khusus mobile */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+/* === Responsif === */
+* Tablet (768px ke atas) */
+@media (min-width: 768px) {
+    .content {
+        padding: 4rem 8%;
     }
     
     .h1 {
         font-size: 2.5rem;
     }
-}
-
-@media (max-width: 480px) {
-    .h1 {
-        font-size: 2rem;
-    }
     
     .p1, .p2, .p3, .p4 {
-        font-size: 1rem;
+        font-size: 1.05rem;
     }
 }
+
+/* Laptop (1024px ke atas) */
+@media (min-width: 1024px) {
+    .content-top {
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 4rem;
+    }
+    
+    .content-text {
+        max-width: 55%;
+        order: 1;
+    }
+    
+    .content-image {
+        order: 2;
+        flex: 0 0 40%;
+    }
+    
+    .h1 {
+        font-size: 3rem;
+    }
+    
+    .content-image img {
+        max-width: 300px;
+    }
+}
+
+/* Layar Lebar (1200px ke atas) */
+@media (min-width: 1200px) {
+    .content {
+        padding: 5rem 10%;
+    }
+    
+    .content-text {
+        max-width: 600px;
+    }
+}
+
 
 @keyframes fadeIn {
     from { opacity: 0; }
