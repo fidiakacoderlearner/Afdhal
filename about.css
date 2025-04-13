@@ -117,13 +117,6 @@ nav ul li a:hover::after {
     animation: slideInLeft 1.2s ease-out forwards;
 }
 
-.p5 {
-    font-size: 1.1rem;
-    color: #64748b;
-    margin-top: 5rem;
-    animation: slideInLeft 1.2s ease-out forwards;
-}
-
 /* === Footer === */
 .footer {
     width: 100%;
@@ -234,10 +227,11 @@ nav ul li a:hover::after {
     .h1 {
         font-size: 2.5rem;
     }
-    
+
     .p1, .p2, .p3, .p4 {
-        font-size: 1.05rem;
-    }
+    font-size: 0.9rem;
+    text-align: center;
+  }
 }
 
 /* Laptop (1024px ke atas) */
