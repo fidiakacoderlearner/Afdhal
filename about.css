@@ -169,9 +169,11 @@ nav ul li a:hover::after {
     font-size: 0.9rem;
     text-align: left;
     line-height: 1;
-    margin-bottom: 0.1;
-    margin: 50px auto;
-    max-width: 600px
+    max-width: 600px; /* Lebar maksimum */
+    margin-left: auto; /* Pusatkan blok */
+    margin-right: auto; /* Pusatkan blok */
+    padding: 0 1rem; /* Padding untuk mobile */
+    width: 100%; /* Pastikan tidak melebihi parent */
   }
     
   .content-image img {
@@ -230,9 +232,11 @@ nav ul li a:hover::after {
         font-size: 0.9rem;
         text-align: left;
         line-height: 1;
-        margin-bottom: 0.1;
-        margin: 50px auto;
-        max-width: 600px
+        max-width: 600px; /* Lebar maksimum */
+        margin-left: auto; /* Pusatkan blok */
+        margin-right: auto; /* Pusatkan blok */
+        padding: 0 1rem; /* Padding untuk mobile */
+        width: 100%; /* Pastikan tidak melebihi parent */
     }
 }
 
