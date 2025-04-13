@@ -250,6 +250,13 @@ nav ul li a:hover::after {
     box-shadow: 0 1px 3px rgba(0,0,0,0.05);
 }
 
+.skill-title {
+    font-size: 2rem;
+    color: #1e293b;
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+}
+
 .skill-item {
     margin-bottom: 1rem;
 }
