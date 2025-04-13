@@ -170,6 +170,8 @@ nav ul li a:hover::after {
     text-align: left;
     line-height: 1;
     margin-bottom: 0.1;
+    margin: 50px auto;
+    max-width: 600px
   }
     
   .content-image img {
