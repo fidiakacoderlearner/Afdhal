@@ -144,7 +144,7 @@ nav ul li a:hover::after {
     
     .content-text {
         margin-bottom: 3rem;
-        text-align: center;
+        text-align: left;
     }
     
     .content-image {
@@ -152,7 +152,7 @@ nav ul li a:hover::after {
     }
     
     .content-image img {
-        max-width: 300px
+        max-width: 400px
     }
 }
 
