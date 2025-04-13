@@ -152,7 +152,7 @@ nav ul li a:hover::after {
     }
     
     .content-image img {
-        max-width: 200px;
+        max-width: 100px;
     }
 }
 
