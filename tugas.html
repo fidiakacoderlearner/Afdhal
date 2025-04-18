@@ -1,506 +1,592 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Web Pidi</title>
-    <link rel="stylesheet" href="tugas.css"/>
-    <style>
-        /* CSS Tambahan untuk Repositori PDF */
-        .pdf-repository {
-            margin: 0 auto;
-            max-width: 900px;
-            padding: 0 40px;
-        }
-        
-        .pdf-item {
-            background: white;
-            border: 1px solid #e1e4e8;
-            border-radius: 6px;
-            padding: 16px;
-            margin-bottom: 16px;
-            display: flex;
-            align-items: center;
-            transition: transform 0.2s, box-shadow 0.2s;
-            cursor: pointer;
-        }
-        
-        .pdf-item:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            background-color: #f8f9fa;
-        }
-        
-        .pdf-icon {
-            margin-right: 16px;
-            font-size: 24px;
-            color: #d93025;
-        }
-        
-        .pdf-info {
-            flex-grow: 1;
-        }
-        
-        .pdf-title {
-            font-weight: 600;
-            margin: 0 0 4px 0;
-            color: #0366d6;
-        }
-        
-        .pdf-meta {
-            font-size: 12px;
-            color: #586069;
-            margin: 0;
-        }
-        
-        @media (max-width: 600px) {
-            .pdf-item {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-            
-            .pdf-icon {
-                margin-bottom: 10px;
-            }
-        }
-        
-        /* Penyesuaian konten utama */
-        .main-content {
-            text-align: center;
-            padding: 40px 20px;
-        }
-    </style>
-    <link href="https://cdn.jsdelivr.net/npm/video.js@7.20.3/dist/video-js.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/dashjs@4.5.0/dist/dash.all.min.js" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Roboto+Slab&display=swap" rel="stylesheet">
-</head>
-<body>
-    <!-- NAVIGATION BAR -->
-    <nav>
-        <a href ="index.html">
-            <div class="hero-image clickable-image">
-                <img src="logo3.png" alt="Affian">
-            </div></a>
-        <ul>
-            <li>
-                <a href="#">Tugas</a>
-            </li>
-            <li>
-                <a href="about.html">About</a>
-            </li>
-            <li>
-                <a href="contact.html">Contact</a>
-            </li>
-        </ul> 
-    </nav>
-    <!-- NAVIGATION BAR DONE -->
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+/* === Gaya Umum === */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8fafc;
+    color: #334155;
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* === Navigasi === */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 5%;
+    background-color: #1e293b;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+nav img {
+    height: 50px;
+    width: auto;
+    animation: slideInLeft 0.6s ease-out 0.2s both
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    animation: slideInRight 0.6s ease-out 0.2s both
+}
+
+nav ul li {
+    margin-left: 2rem;
+}
+
+nav ul li a {
+    color: #f8fafc;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+    position: relative;
+    padding-bottom: 5px;
+}
+
+nav ul li a:hover {
+    color: #60a5fa;
+}
+
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #60a5fa;
+    transition: width 0.3s ease;
+}
+
+nav ul li a:hover::after {
+    width: 100%;
+}
+
+.content {
+    flex: 1; /* Mengisi sisa ruang */
+    padding-bottom: 0;
+    animation: scaleIn 0.8s ease-out 0.6s both;
+}
+
+.content-images {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.image-format {
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #333;
+    font-size: 14px;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.image-container {
+    background-color: #f5f5f5;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    cursor: pointer;
+    position: relative;
+    display: inline-block;
+    margin: 10px;
+}
+
+.image-container img {
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.2s;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    aspect-ratio: 16/9;
+}
+
+.image-container img:hover {
+    transform: scale(1.02);
+}
+
+.image-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    color: white;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    z-index: 10;
+    padding: 15px;
+    box-sizing: border-box;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.close-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.overlay-content {
+    text-align: center;
+    max-width: 90%;
+}
+
+.content-video {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 25px;
+    padding: 30px;
+    max-width: 140 0px;
+    margin: 0 auto;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f8f9fa;
+}
+
+.video-container {
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.video-container:hover {
+    transform: translateY(-3px);
+}
+
+.video-format {
+    font-size: 16px;
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 12px;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.video-spec {
+    padding-left: 5px;
+}
+
+video {
+    width: 100%;
+    border-radius: 6px;
+    background: #000;
+}
+
+.unsupported-message {
+    color: #e74c3c;
+    text-align: center;
+    padding: 10px;
+    font-size: 14px;
+    display: none;
+}
+
+.conversion-progress {
+    display: none;
+    margin-top: 10px;
+    text-align: center;
+    color: #3498db;
+}
+
+.font-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 25px;
+    padding: 30px;
+    max-width: 1400px;
+    margin: 0 auto;
+    background-color: #f8f9fa;
+}
+
+.font-card {
+    background: white;
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+    min-height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.font-name {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: #666;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.font-preview {
+    font-size: 24px;
+    line-height: 1.4;
+}
+
+/* Font Style Classes */
+.serif { font-family: "Times New Roman", Times, serif; }
+.sans-serif { font-family: Arial, Helvetica, sans-serif; }
+.slab-serif { font-family: "Roboto Slab", "Courier New", serif; }
+.comic { font-family: "Comic Sans MS", cursive, sans-serif; }
+.stencil { font-family: "Stencil", "Impact", fantasy; }
+.typewriter { font-family: "Courier New", monospace; }
+.tnr { font-family: "Times New Roman", serif; }
+.retro { font-family: "Press Start 2P", cursive; }
+.georgia { font-family: Georgia, serif; }
+.bodoni { font-family: "Bodoni MT", Didot, "Didot LT STD", serif; }
+
+@media (max-width: 768px) {
+    .font-gallery {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .content-video {
+        grid-template-columns: 1fr;
+    }
+}
+
+.audio-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 25px;
+    padding: 30px;
+    max-width: 1300px;
+    margin: 0 auto;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.audio-player {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease;
+}
+
+.audio-player:hover {
+    transform: translateY(-5px);
+}
+
+.audio-header {
+    font-size: 16px;
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 12px;
+    text-align: center;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+audio {
+    width: 100%;
+    border-radius: 8px;
+    background: #f8f9fa;
+}
+
+audio::-webkit-media-controls-panel {
+    background: #f8f9fa;
+}
+
+/* Responsif untuk layar kecil */
+@media (max-width: 768px) {
+    .audio-gallery {
+        grid-template-columns: 1fr;
+    }
+}
+
+.jenis-content {
+    margin: 0 auto;
+    max-width: 900px;
+    margin-top: 40px;
+}
+
+/* === Konten Utama === */
+.main-content {
+    text-align: center;
+    padding: 5rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    animation: scaleIn 0.8s ease-out 0.6s both;
+}
+
+.main-content h1 {
+    font-size: 2.5rem;
+    color: #1e293b;
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.main-content p {
+    font-size: 1.1rem;
+    color: #64748b;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+/* === Repositori PDF === */
+.pdf-repository {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 2rem;
+}
+
+.pdf-item {
+    background: #ffffff;
+    border-radius: 10px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    cursor: pointer;
+    border: 1px solid #e2e8f0;
+    animation: scaleIn 0.8s ease-out 0.6s both;
+}
+
+.pdf-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    border-color: #93c5fd;
+}
+
+.pdf-icon {
+    margin-right: 1.5rem;
+    font-size: 2rem;
+    color: #ef4444;
+    min-width: 40px;
+    text-align: center;
+}
+
+.pdf-info {
+    flex-grow: 1;
+    text-align: left;
+}
+
+.pdf-title {
+    font-weight: 600;
+    margin: 0 0 0.5rem 0;
+    color: #2563eb;
+    font-size: 1.1rem;
+}
+
+.pdf-meta {
+    font-size: 0.85rem;
+    color: #64748b;
+    margin: 0;
+    display: flex;
+    gap: 1rem;
+}
+
+.pdf-meta span {
+    display: inline-flex;
+    align-items: center;
+}
+
+.pdf-meta span::before {
+    content: "•";
+    margin-right: 0.5rem;
+    color: #cbd5e1;
+}
+
+iframe {
+    display: block;
+    margin-bottom: 40px;
+    max-width: 100%;
+}
+
+@media (max-width: 768px) {
+    iframe {
+        width: 90%;
+        height: 200px;
+    }
+}
+
+/* === Responsif === */
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column;
+        padding: 1rem;
+    }
     
-    <!-- CONTENT UTAMA -->
-    <div class="content">
-        <div class="main-content">
-            <h1>Tugas Saya</h1>
-            <p>Berikut koleksi Tugas yang dapat Anda akses</p>
-        </div>
-        <!-- REPOSITORI PDF -->
-        <div class="pdf-repository">
-            <h2 class="jenis-content">PDF</h2>
-            <div class="pdf-item" data-pdf="Laporan Ujian Tengah Semester pidi1.pdf" data-filename="Laporan-Tengah-Semester.pdf">
-                <div class="pdf-icon">📄</div>
-                <div class="pdf-info">
-                    <h3 class="pdf-title">Laporan Tengah Semester</h3>
-                    <p class="pdf-meta">PDF • 844 KB • Diperbarui 11 April 2025</p>
-                </div>
-            </div>
-        <h2 class="jenis-content">FONT</h2>
-        <div class="font-gallery">
-            <!-- Serif -->
-            <div class="font-card">
-                <div class="font-name">Serif</div>
-                <div class="font-preview serif">Contoh Font</div>
-            </div>
-            <!-- Sans Serif -->
-            <div class="font-card">
-                <div class="font-name">Sans Serif</div>
-                <div class="font-preview sans-serif">Contoh Font</div>
-            </div>
-            <!-- Slab Serif -->
-            <div class="font-card">
-                <div class="font-name">Slab Serif</div>
-                <div class="font-preview slab-serif">Contoh Font</div>
-            </div>
-            <!-- Comic -->
-            <div class="font-card">
-                <div class="font-name">Comic</div>
-                <div class="font-preview comic">Contoh Font</div>
-            </div>          
-            <!-- Stencil -->
-            <div class="font-card">
-                <div class="font-name">Stencil</div>
-                <div class="font-preview stencil">Contoh Font</div>
-            </div>           
-            <!-- Typewriter -->
-            <div class="font-card">
-                <div class="font-name">Typewriter</div>
-                <div class="font-preview typewriter">Contoh Font</div>
-            </div>
-            <!-- Times New Roman -->
-            <div class="font-card">
-                <div class="font-name">Times New Roman</div>
-                <div class="font-preview tnr">Contoh Font</div>
-            </div>
-            <!-- Retro -->
-            <div class="font-card">
-                <div class="font-name">Retro</div>
-                <div class="font-preview retro">Contoh Font</div>
-            </div>
-            <!-- Georgia -->
-            <div class="font-card">
-                <div class="font-name">Georgia</div>
-                <div class="font-preview georgia">Contoh Font</div>
-            </div>
-            <!-- Bodoni -->
-            <div class="font-card">
-                <div class="font-name">Bodoni</div>
-                <div class="font-preview bodoni">Contoh Font</div>
-            </div>
-        </div>
-        <h2 class="jenis-content">Gambar</h2>
-        <p class="jenis-contetn">Ketuk gambar untuk melihat Ukuran File</p>
-        <div class="content-images">
-            <div class="image-container">
-                <div class="image-format">JPG</div>
-                <img src="pensil1.jpg" alt="Contoh Gambar">
-                <div class="image-overlay">
-                    <button class="close-btn">×</button>
-                    <div class="overlay-content">
-                        <h3>Ukuran File : </h3>
-                        <p>125 KB</p>
-                    </div>
-                </div>
-            </div>
-            <div class="image-container">
-                <div class="image-format">PNG</div>
-                <img src="pensil1.png" alt="PNG Image Example">
-                <div class="image-overlay">
-                    <button class="close-btn">×</button>
-                    <div class="overlay-content">
-                        <h3>Ukuran File : </h3>
-                        <p>1.007 KB</p>
-        
-                    </div>
-                </div>
-            </div>
-            <div class="image-container">
-                <div class="image-format">GIF</div>
-                <img src="pensil1.gif" alt="GIF Image Example">
-                <div class="image-overlay">
-                    <button class="close-btn">×</button>
-                    <div class="overlay-content">
-                        <h3>Ukuran File : </h3>
-                        <p>454 KB</p>
-        
-                    </div>
-                </div>
-            </div>
-            <div class="image-container">
-                <div class="image-format">SVG</div>
-                <img src="pensil1.svg" alt="SVG Image Example">
-                <div class="image-overlay">
-                    <button class="close-btn">×</button>
-                    <div class="overlay-content">
-                        <h3>Ukuran File : </h3>
-                        <p>68 KB</p>
-        
-                    </div>
-                </div>
-            </div>
-            <div class="image-container">
-                <div class="image-format">ODD</div>
-                <img src="pensil1.odd" alt="ODD Image Example">
-                <div class="image-overlay">
-                    <button class="close-btn">×</button>
-                    <div class="overlay-content">
-                        <h3>Ukuran File : </h3>
-                        <p>133 KB</p>
-        
-                    </div>
-                </div>
-            </div>
-            <div class="image-container">
-                <div class="image-format">BMP</div>
-                <img src="pensil1.bmp" alt="BMP Image Example">
-                <div class="image-overlay">
-                    <button class="close-btn">×</button>
-                    <div class="overlay-content">
-                        <h3>Ukuran File : </h3>
-                        <p>3.192 KB</p>
-        
-                    </div>
-                </div>
-            </div>
-            <div class="image-container">
-                <div class="image-format">AVIF</div>
-                <img src="pensil1.avif" alt="AVIF Image Example">
-                <div class="image-overlay">
-                    <button class="close-btn">×</button>
-                    <div class="overlay-content">
-                        <h3>Ukuran File : </h3>
-                        <p>34 KB</p>
-        
-                    </div>
-                </div>
-            </div>
-            <div class="image-container">
-                <div class="image-format">WEBP</div>
-                <img src="pensil1.webp" alt="WEBP Image Example">
-                <div class="image-overlay">
-                    <button class="close-btn">×</button>
-                    <div class="overlay-content">
-                        <h3>Ukuran File : </h3>
-                        <p>74 KB</p>
-        
-                    </div>
-                </div>
-            </div>
-            <div class="image-container">
-                <div class="image-format">ICO</div>
-                <img src="pensil1.ico" alt="ICO Image Example">
-                <div class="image-overlay">
-                    <button class="close-btn">×</button>
-                    <div class="overlay-content">
-                        <h3>Ukuran File : </h3>
-                        <p>3 KB</p>
-        
-                    </div>
-                </div>
-            </div>
-            <div class="image-container">
-                <div class="image-format">HEIF</div>
-                <img src="pensil1.heif" alt="HEIF Image Example">
-                <div class="image-overlay">
-                    <button class="close-btn">×</button>
-                    <div class="overlay-content">
-                        <h3>Ukuran File : </h3>
-                        <p>133 KB</p>
-        
-                    </div>
-                </div>
-            </div>
-        </div>
-        <h2 class="jenis-content">VIDEO</h2>
-        <div class="content-video">
-            <div class="video-container">
-                <div class="video-format">MP4</div>
-                <video controls controlsList="nodownload" width="100%">
-                    <source src="tree1.mp4" type="video/mp4">
-                </video>
-                <div class="video-spec">Ukuran File : 6.966 KB</div>
-                <div class="video-spec">Jenis format ini didukung oleh browser</div>
-            </div>
-            <div class="video-container">
-                <div class="video-format">WebM</div>
-                <video controls controlsList="nodownload" width="100%">
-                    <source src="tree1.webm" type="video/webm">
-                </video>
-                <div class="video-spec">Ukuran File :4.542 KB</div>
-                <div class="video-spec">Jenis format ini didukung oleh browser</div>
-            </div>
-            <div class="video-container">
-                <div class="video-format">AVI</div>
-                <iframe src="https://drive.google.com/file/d/1ydb9s-QlZhMXXgXvIrAxulf3dlgVZru1/preview" width="640" height="280" allow="autoplay"></iframe>
-                <div class="video-spec">Ukuran File : 5.169 KB</div>
-                <div class="video-spec">Jenis format ini tidak didukung oleh browser sehingga menggunakan link embed</div>
-            </div>
-            <div class="video-container">
-                <div class="video-format">3GP</div>
-                <iframe src="https://drive.google.com/file/d/1s0AvLHFSmEkyST7PxL8oCVJ0fX3mC04G/preview" width="640" height="280" allow="autoplay"></iframe>
-                <div class="video-spec">Ukuran File : 370 KB</div>
-                <div class="video-spec">Jenis format ini tidak didukung oleh browser sehingga menggunakan link embed</div>
-            </div>
-            <div class="video-container">
-                <div class="video-format">WMV</div>
-                <iframe src="https://drive.google.com/file/d/1aM6Kay7jzSlhTmfsE3xA6kQmBlSKGGNw/preview" width="640" height="280" allow="autoplay"></iframe>
-                <div class="video-spec">Ukuran File : 10.079 KB</div>
-                <div class="video-spec">Jenis format ini tidak didukung oleh browser sehingga menggunakan link embed</div>
-            </div>
-            <div class="video-container">
-                <div class="video-format">FLV</div>
-                <iframe src="https://drive.google.com/file/d/1ixJ3YYTfo3JoMXyjpTurDfr_it6g_pxL/preview" width="640" height="280" allow="autoplay"></iframe>
-                <div class="video-spec">Ukuran File : 5.162 KB</div>
-                <div class="video-spec">Jenis format ini tidak didukung oleh browser sehingga menggunakan link embed</div>
-            </div>
-            <div class="video-container">
-                <div class="video-format">MKV</div>
-                <iframe src="https://drive.google.com/file/d/1yIyX3YBNtsIZ11OxWDZRLLKrk09SbNHV/preview" width="640" height="280" allow="autoplay"></iframe>
-                <div class="video-spec">Ukuran File : 5.158 KB</div>
-                <div class="video-spec">Jenis format ini tidak didukung oleh browser sehingga menggunakan link embed</div>
-            </div>
-            <div class="video-container">
-                <div class="video-format">MPG</div>
-                <iframe src="https://drive.google.com/file/d/16x7Qz4RpLDYF29jgj0ixk0LDCLCYEAlf/preview" width="640" height="280" allow="autoplay"></iframe>
-                <div class="video-spec">Ukuran File : 11.518 KB</div>
-                <div class="video-spec">Jenis format ini tidak didukung oleh browser sehingga menggunakan link embed</div>
-            </div>
-            <div class="video-container">
-                <div class="video-format">OGV</div>
-                <iframe src="https://drive.google.com/file/d/17rBjhvR8-dlGNOw5A9z_RZbapUdyubNf/preview" width="640" height="280" allow="autoplay"></iframe>
-                <div class="video-spec">Ukuran File : 12.545 KB</div>
-                <div class="video-spec">Jenis format ini tidak didukung oleh browser sehingga menggunakan link embed</div>
-            </div>
-            <div class="video-container">
-                <div class="video-format">MOV</div>
-                <video controls controlsList="nodownload" width="100%">
-                    <source src="tree1.mov" type="video/ogg">
-                </video>
-                <div class="video-spec">Ukuran File : 5.160 KB</div>
-                <div class="video-spec">Jenis format ini didukung oleh browser</div>
-            </div>
-        </div>
-        <h2 class="jenis-content">AUDIO</h2>            
-        <div class="audio-gallery">
-            <div class="audio-player">
-                <div class="audio-header">MP3</div>
-                <audio controls controlsList="nodownload">
-                    <source src="clean1.mp3" type="audio/mpeg">
-                </audio>
-                <div class="video-spec">Ukuran File : 193 KB</div>
-                <div class="video-spec">Jenis format ini didukung oleh browser</div>
-            </div>      
-            <div class="audio-player">
-                <div class="audio-header">WAV</div>
-                <audio controls controlsList="nodownload">
-                    <source src="clean1.wav" type="audio/wav">
-                </audio>
-                <div class="video-spec">Ukuran File : 1.063 KB</div>
-                <div class="video-spec">Jenis format ini didukung oleh browser</div>
-            </div>
-            <div class="audio-player">
-                <div class="audio-header">AAC</div>
-                <audio controls controlsList="nodownload">
-                    <source src="clean1.aac" type="audio/mpeg">
-                </audio>
-                <div class="video-spec">Ukuran File : 82 KB</div>
-                <div class="video-spec">Jenis format ini didukung oleh browser</div>
-            </div>      
-            <div class="audio-player">
-                <div class="audio-header">AIFF</div>
-                <audio controls controlsList="nodownload">
-                    <source src="clean1.aiff" type="audio/wav">
-                </audio>
-                <div class="video-spec">Ukuran File : 1.063 KB</div>
-                <div class="video-spec">Jenis format ini tidak didukung oleh browser</div>
-            </div>
-            <div class="audio-player">
-                <div class="audio-header">M4A</div>
-                <audio controls controlsList="nodownload">
-                    <source src="clean1.m4a" type="audio/mpeg">
-                </audio>
-                <div class="video-spec">Ukuran File : 956 KB</div>
-                <div class="video-spec">Jenis format ini tidak didukung oleh browser</div>
-            </div>
-            <div class="audio-player">
-                <div class="audio-header">M4R</div>
-                <audio controls controlsList="nodownload">
-                    <source src="clean1.m4r" type="audio/wav">
-                </audio>
-                <div class="video-spec">Ukuran File : 100 KB</div>
-                <div class="video-spec">Jenis format ini didukung oleh browser</div>
-            </div>
-            <div class="audio-player">
-                <div class="audio-header">FLAC</div>
-                <audio controls controlsList="nodownload">
-                    <source src="clean1.flac" type="audio/mpeg">
-                </audio>
-                <div class="video-spec">Ukuran File : 844 KB</div>
-                <div class="video-spec">Jenis format ini didukung oleh browser</div>
-            </div>           
-            <div class="audio-player">
-                <div class="audio-header">OGG</div>
-                <audio controls controlsList="nodownload">
-                    <source src="clean1.ogg" type="audio/wav">
-                </audio>
-                <div class="video-spec">Ukuran File : 68 KB</div>
-                <div class="video-spec">Jenis format ini didukung oleh browser</div>
-            </div>
-            <div class="audio-player">
-                <div class="audio-header">OPUS</div>
-                <audio controls controlsList="nodownload">
-                    <source src="clean1.opus" type="audio/mpeg">
-                </audio>
-                <div class="video-spec">Ukuran File : 74 KB</div>
-                <div class="video-spec">Jenis format ini didukung oleh browser</div>
-            </div>
-            <div class="audio-player">
-                <div class="audio-header">WMA</div>
-                <audio controls controlsList="nodownload">
-                    <source src="clean1.wma" type="audio/wav">
-                </audio>
-                <div class="video-spec">Ukuran File : 107 KB</div>
-                <div class="video-spec">Jenis format ini tidak didukung oleh browser</div>
-            </div>
-        </div>     
-    </div>
+    nav ul {
+        margin-top: 1rem;
+    }
+    
+    nav ul li {
+        margin: 0 1rem;
+    }
+    
+    .main-content {
+        padding: 3rem 1rem;
+    }
+    
+    .pdf-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .pdf-icon {
+        margin-right: 0;
+        margin-bottom: 1rem;
+    }
+    
+    .pdf-meta {
+        flex-direction: column;
+        gap: 0.3rem;
+    }
+    
+    .pdf-meta span::before {
+        display: none;
+    }
+}
 
-    <!-- FOOTER -->
-    <div class="footer">
-        Copyright &copy; 2025 By Afdhal Fidi Ansori
-    </div>
+@media (max-width: 480px) {
+    .main-content h1 {
+        font-size: 2rem;
+    }
+    
+    .pdf-repository {
+        padding: 0 1rem;
+    }
+}
 
-    <script>
-        // Fungsi untuk deteksi perangkat mobile
-        function isMobileDevice() {
-            return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/
-        }
+/* === Footer Styles === */
+.footer {
+    width: 100%;
+    padding: 1.5rem 0;
+    background-color: #1e293b;
+    color: #f8fafc;
+    text-align: center;
+    position: relative;
+    bottom: 0;
+    left: 0;
+    animation: fadeIn 1s ease-out 0.8s both;
+}
 
-        // Fungsi untuk menangani klik PDF
-        function handlePdfClick(pdfUrl, pdfName) {
-            if (isMobileDevice()) {
-                const link = document.createElement('a');
-                link.href = pdfUrl;
-                link.download = pdfName;
-                document.body.appendChild(link);
-                link.click();
-                document.body.removeChild(link);
-            } else {
-                window.location.href = 'repo.html';
-            }
-        }
+.clickable-image {
+    position: relative;
+    display: inline-block;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
 
-        // Tambahkan event listener ke semua item PDF
-        document.querySelectorAll('.pdf-item').forEach(item => {
-            item.addEventListener('click', function() {
-                const pdfUrl = this.getAttribute('data-pdf');
-                const pdfName = this.getAttribute('data-filename');
-                handlePdfClick(pdfUrl, pdfName);
-            });
-        });
-    </script>
+.clickable-image img {
+    width: auto;
+    height: 50px;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    display: block;
+}
 
-    <script>
-        document.querySelectorAll('.image-container img').forEach(img => {
-            img.addEventListener('click', function() {
-                // Cari overlay yang terkait dengan gambar ini
-                const overlay = this.nextElementSibling;
-                overlay.style.display = 'flex';
-            });
-        });
+.clickable-image:hover {
+    transform: translateY(-5px);
+}
 
-        document.querySelectorAll('.close-btn').forEach(btn => {
-            btn.addEventListener('click', function(e) {
-                e.stopPropagation();
-                this.parentElement.style.display = 'none';
-            });
-        });
+.clickable-image:hover img {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
 
-        // Optional: Close overlay ketika klik di area overlay (di luar konten)
-        document.querySelectorAll('.image-overlay').forEach(overlay => {
-            overlay.addEventListener('click', function(e) {
-                if (e.target === this) {
-                    this.style.display = 'none';
-                }
-            });
-        });
-    </script>
+.clickable-image::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
 
-</body>
-</html>
+.clickable-image:hover::after {
+    opacity: 1;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideInLeft {
+    from { 
+        transform: translateX(-50px);
+        opacity: 0;
+    }
+    to { 
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideInRight {
+    from { 
+        transform: translateX(50px);
+        opacity: 0;
+    }
+    to { 
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideInUp {
+    from { 
+        transform: translateY(30px);
+        opacity: 0;
+    }
+    to { 
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes scaleIn {
+    from { 
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    to { 
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+
